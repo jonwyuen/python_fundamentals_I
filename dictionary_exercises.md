@@ -7,11 +7,11 @@
 2.
 
   ```python
-  list = ["CA", "NJ", "RI"]
-  list2 = ["California", "New Jersey", "Rhode Island"]
+  l = ["CA", "NJ", "RI"]
+  l2 = ["California", "New Jersey", "Rhode Island"]
 
-  dict(zip(list,list2))
-  {list[i]: list2[i] for i in range(0,3)}
+  dict(zip(l,l2))
+  {l[i]: l2[i] for i in range(0,3)}
   ```
 
 3.

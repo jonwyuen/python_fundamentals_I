@@ -12,10 +12,10 @@ def print_day(num):
   day_list = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   return day_list[num-1]
 
-def last_element(list):
-  if len(list) == 0:
+def last_element(l):
+  if len(l) == 0:
     return None
-  return list[-1]
+  return l[-1]
 
 def number_compare(num1, num2):
   if num1 > num2:
@@ -30,31 +30,31 @@ def single_letter_count(word, letter):
 def multiple_letter_count(word):
   return {letter.lower(): word.lower().count(letter.lower()) for letter in word}
 
-def list_manipulation(list, cmd, loc, val):
+def list_manipulation(l, cmd, loc, val):
   if cmd == "remove" and loc == "end":
-    return list.pop()
+    return l.pop()
   elif cmd == "remove" and loc == "beginning":
-    return list.pop(0)
+    return l.pop(0)
   elif cmd == "add" and loc == "beginning":
-    list.insert(0, val)
-    return list
+    l.insert(0, val)
+    return l
   elif cmd == "add" and loc == "end":
-    list.append(val)
-    return list
+    l.append(val)
+    return l
 
 def is_palindrome(word):
   word = word.lower().replace(" ", "")
   return word == word[::-1]
 
-def frequency(list, search_term):
-  return list.count(search_term)
+def frequency(l, search_term):
+  return l.count(search_term)
 
-def flip_case(str, letter):
-  return "".join([char.swapcase() if char.lower() == letter.lower() else char for char in str])
+def flip_case(string, letter):
+  return "".join([char.swapcase() if char.lower() == letter.lower() else char for char in string])
 
-def multipy_even_numbers(list):
+def multipy_even_numbers(l):
   product = 1
-  for num in list:
+  for num in l:
     if num % 2 == 0:
       product *= num
   return product
@@ -65,14 +65,14 @@ def mode(l):
   correct_index = list(count.values()).index(max_value)
   return list(count.keys())[correct_index]
 
-def capitalize(str):
-  return str[0].upper() + str[1:]
+def capitalize(string):
+  return string[0].upper() + string[1:]
 
-def compact(list):
-  return [val for val in list if val]
+def compact(l):
+  return [val for val in l if val]
 
-def partition(list, fn):
-  return [[val for val in list if fn(val)], [val for val in list if not fn(val)]]
+def partition(l, fn):
+  return [[val for val in l if fn(val)], [val for val in l if not fn(val)]]
   
 def intersection(list1, list2):
   return [val for val in list1 if val in list2]
@@ -87,12 +87,12 @@ def once(fn):
 
 # Part 2
 
-def reversed_strings(str):
-  return str[::-1]
+def reversed_strings(string):
+  return string[::-1]
 
-def looking_for_a_benefactor(list, new_avg):
+def looking_for_a_benefactor(l, new_avg):
   import math
-  last_donation = math.ceil(new_avg * (len(list)+1) - sum(list))
+  last_donation = math.ceil(new_avg * (len(l)+1) - sum(l))
   if last_donation <= 0:
     raise Exception("There was an error, last donation is less than 0.")
   return last_donation
@@ -101,10 +101,10 @@ def sum_of_a_sequence(begin_num, end_num, step):
   l = [num for num in range(begin_num, end_num + 1)]
   return sum(l[::step])
 
-def max_diff(lst):
-  if len(lst) <= 1:
+def max_diff(l):
+  if len(l) <= 1:
     return 0
-  return max(lst) - min(lst)
+  return max(l) - min(l)
 
 def count_the_smiley_faces(l):
   lst = [val for val in l 
