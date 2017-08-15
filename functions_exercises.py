@@ -85,19 +85,36 @@ def once(fn):
   inner.count = 0
   return inner
 
+
+def once_decorator(fn):
+  once.has_been_called = False
+  def inner(*args):
+    if not once.has_been_called:
+      once.has_been_called = True
+      return fn(*args)
+  return inner
+
+
+@once_decorator
+def add(a,b):
+  return a+b
+
+add(1,1) # 2
+add(2,2) # None
+
 # Part 2
 
-def reversed_strings(string):
+def solution(string):
   return string[::-1]
 
-def looking_for_a_benefactor(l, new_avg):
+def new_avg(l, new_avg):
   import math
   last_donation = math.ceil(new_avg * (len(l)+1) - sum(l))
   if last_donation <= 0:
     raise Exception("There was an error, last donation is less than 0.")
   return last_donation
 
-def sum_of_a_sequence(begin_num, end_num, step):
+def sequence_sum(begin_num, end_num, step):
   l = [num for num in range(begin_num, end_num + 1)]
   return sum(l[::step])
 
@@ -106,7 +123,7 @@ def max_diff(l):
     return 0
   return max(l) - min(l)
 
-def count_the_smiley_faces(l):
+def count_smileys(l):
   lst = [val for val in l 
     if (len(val) == 2 and (val[0] == ":" or val[0] == ";") and (val[-1] == ")" or val[-1] =="D")) 
     or (len(val) == 3 and (val[0] == ":" or val[0] == ";") and (val[-1] == ")" or val[-1] == "D") and (val[1] == "~" or val[1] == "-"))]   
@@ -119,7 +136,7 @@ def sentence_count(paragraph):
       count += 1
   return count
 
-def tortoise_racing(v1, v2, g):
+def race(v1, v2, g):
   if v1 >= v2:
     return None
   t = (g/(v2-v1))*3600
@@ -128,7 +145,7 @@ def tortoise_racing(v1, v2, g):
   s = int(t%60)
   return [h, m, s]
 
-def calculate_string_rotation(first, second):
+def shifted_diff(first, second):
   for num in range(0, len(second)):
     if second[num:] + second[:num] == first:
       return num
